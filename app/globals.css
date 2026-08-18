@@ -15,17 +15,17 @@
 }
 
 @theme inline {
---primary-blue: hsl(213, 96%, 18%);
-  --primary-purple: hsl(243, 100%, 62%);
-  --primary-blue-light: hsl(228, 100%, 84%);
-  --primary-blue-lighter: hsl(206, 94%, 87%);
-  --primary-red: hsl(354, 84%, 57%);
+  --color-primary-blue: var(--primary-blue);
+  --color-primary-purple: var(--primary-purple);
+  --color-primary-blue-light: var(--primary-blue-light);
+  --color-primary-blue-lighter: var(--primary-blue-lighter);
+  --color-primary-red: var(--primary-red);
 
-  --neutral-grey: hsl(231, 11%, 63%);
-  --neutral-purple-light: hsl(229, 24%, 87%);
-  --neutral-blue-light: hsl(218, 100%, 97%);
-  --neutral-blue-lighter: hsl(231, 100%, 99%);
-  --neutral-white: hsl(0, 100%, 100%);
+  --color-neutral-grey: var(--neutral-grey);
+  --color-neutral-purple-light: var(--neutral-purple-light);
+  --color-neutral-blue-light: var(--neutral-blue-light);
+  --color-neutral-blue-lighter: var(--neutral-blue-lighter);
+  --color-neutral-white: var(--neutral-white);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,4 +34,11 @@
 }
 
 body {
+}
+
+.app-bg {
+  background: url("../public/images/bg-sidebar-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
