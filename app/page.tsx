@@ -1,8 +1,12 @@
+"use client";
+
+import { MultiStepForm } from "./components/MultiStepForm";
+
 export default function Home() {
   return (
     <div className="">
-      <main className="">
-      
+      <main className="min-h-screen">
+        <MultiStepForm />
       </main>
     </div>
   );
