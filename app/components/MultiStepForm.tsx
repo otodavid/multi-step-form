@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { STEPS } from "../utils/constants";
 import { Footer } from "./Footer";
 import { FormStep } from "./FormStep";
@@ -13,6 +13,7 @@ import { ConfirmationPage } from "./ConfirmationPage";
 export const MultiStepForm = () => {
   const [step, setStep] = useState<number>(1);
   const [hasFinishedForm, setHasFinishedForm] = useState<boolean>(false);
+  const stepHeadingRef = useRef<HTMLDivElement>(null);
 
   const methods = useForm<FormState>({
     defaultValues: {
@@ -25,10 +26,14 @@ export const MultiStepForm = () => {
     },
   });
 
+  useEffect(() => {
+    stepHeadingRef.current?.focus();
+  }, [step, hasFinishedForm]);
+
   const { handleSubmit, trigger } = methods;
 
   const onSubmit = (data: FormState) => {
-    console.log("Form submitted:", data);
+    alert(`Thanks ${data.name}, your form has been submitted`);
   };
 
   const nextStep = async () => {
@@ -39,13 +44,12 @@ export const MultiStepForm = () => {
         return;
       }
     }
-    
+
     if (step === 4) {
       setHasFinishedForm(true);
     }
 
     setStep((prev) => (prev < STEPS.length ? prev + 1 : prev));
-
   };
 
   const prevStep = () => {
@@ -81,6 +85,8 @@ export const MultiStepForm = () => {
             >
               <div
                 className={`bg-neutral-white mx-auto w-11/12  h-full rounded-xl py-8 px-6 md:px-0 md:py-0 md:w-full ${hasFinishedForm && "flex justify-center items-center"}`}
+                ref={stepHeadingRef}
+                tabIndex={-1}
               >
                 {step === 1 && <PersonalInfo />}
                 {step === 2 && <PlanStep />}
