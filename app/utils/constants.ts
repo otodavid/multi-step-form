@@ -13,10 +13,10 @@ export const ADDONS_LIST: Addon[] = [
     description: "Access to multiplayer games",
     pricing: {
       monthly: {
-        price: "+$1/mo",
+        price: 1,
       },
       yearly: {
-        price: "+$10/yr",
+        price: 10,
       },
     },
   },
@@ -25,10 +25,10 @@ export const ADDONS_LIST: Addon[] = [
     description: "Extra 1TB of cloud save",
     pricing: {
       monthly: {
-        price: "+$2/mo",
+        price: 2,
       },
       yearly: {
-        price: "+$20/yr",
+        price: 20,
       },
     },
   },
@@ -37,10 +37,10 @@ export const ADDONS_LIST: Addon[] = [
     description: "Custom theme on your profile",
     pricing: {
       monthly: {
-        price: "+$2/mo",
+        price: 2,
       },
       yearly: {
-        price: "+$20/yr",
+        price: 20,
       },
     },
   },
@@ -50,24 +50,24 @@ export const PLANS_LIST: Plan[] = [
   {
     name: "Arcade",
     pricing: {
-      monthly: { price: "$9/mo" },
-      yearly: { price: "$90/yr", promo: "2 months free" },
+      monthly: { price: 9 },
+      yearly: { price: 90, promo: "2 months free" },
     },
     image: "/images/icon-arcade.svg",
   },
   {
     name: "Advanced",
     pricing: {
-      monthly: { price: "$12/mo" },
-      yearly: { price: "$120/yr", promo: "2 months free" },
+      monthly: { price: 12 },
+      yearly: { price: 120, promo: "2 months free" },
     },
     image: "/images/icon-advanced.svg",
   },
   {
     name: "Pro",
     pricing: {
-      monthly: { price: "$15/mo" },
-      yearly: { price: "$150/yr", promo: "2 months free" },
+      monthly: { price: 15 },
+      yearly: { price: 150, promo: "2 months free" },
     },
     image: "/images/icon-pro.svg",
   },
