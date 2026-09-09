@@ -1,105 +1,100 @@
+import { useFormContext } from "react-hook-form";
 import { FormState } from "../types/types";
+import { Heading } from "./Heading";
 
-interface PersonalInfoProps {
-  formData: FormState;
-  updatePersonalInfo: (newFormData: FormState) => void;
-  errors: {
-    name: string;
-    email: string;
-    phone: string;
-  };
-}
-
-export const PersonalInfo = ({
-  formData,
-  updatePersonalInfo,
-  errors,
-}: PersonalInfoProps) => {
-  const handlePersonalInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    updatePersonalInfo({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  console.log("PersonalInfo component rendered with formData:", formData);
+export const PersonalInfo = () => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<FormState>();
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-primary-blue"> Personal info</h2>
-      <p className="text-neutral-grey font-normal mt-2">
-        Please provide your name, email address, and phone number.
-      </p>
+      <Heading
+        title="Personal Info"
+        description="Please provide your name, email address, and phone number."
+      />
 
-      <div className="space-y-4 mt-6">
-        <div className="flex flex-col gap-1">
+      <div className="space-y-4 mt-6 lg:space-y-6">
+        <div className="space-y-1 xl:space-y-1.5">
           <div className="flex items-center justify-between">
             <label
               htmlFor="name"
-              className="text-primary-blue text-sm flex items-center justify-between"
+              className="text-primary-blue text-sm xl:text-base"
             >
               Name
             </label>
             {errors.name && (
               <span className="text-primary-red text-xs font-medium">
-                {errors.name}
+                {errors.name.message}
               </span>
             )}
           </div>
           <input
+            {...register("name", { required: "Name is required" })}
             type="text"
             id="name"
-            name="name"
-            required
-            value={formData.name}
-            onChange={(e) => handlePersonalInfoChange(e)}
             placeholder="e.g. Stephen King"
-            className="rounded-sm px-4 py-2 placeholder-neutral-grey font-medium border border-neutral-grey"
+            className="w-full rounded-lg px-4 py-3 placeholder-neutral-grey font-medium border border-neutral-grey xl:text-lg cursor-pointer"
           />
         </div>
 
-        <div className="flex flex-col gap-1">
+        <div className="space-y-1 xl:space-y-1.5">
           <div className="flex items-center justify-between">
-            <label htmlFor="email" className="text-primary-blue text-sm">
+            <label
+              htmlFor="email"
+              className="text-primary-blue text-sm  xl:text-base"
+            >
               Email Address
             </label>
             {errors.email && (
               <span className="text-primary-red text-xs font-medium">
-                {errors.email}
+                {errors.email.message}
               </span>
             )}
           </div>
           <input
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                message: "Invalid email address",
+              },
+            })}
             type="text"
             id="email"
-            name="email"
-            value={formData.email}
-            onChange={(e) => handlePersonalInfoChange(e)}
             placeholder="e.g. stephenking@lorem.com"
-            className="rounded-sm px-4 py-2 placeholder-neutral-grey font-medium border border-neutral-grey"
+            className="w-full rounded-lg px-4 py-3 placeholder-neutral-grey font-medium border border-neutral-grey xl:text-lg cursor-pointer"
           />
         </div>
 
-        <div className="flex flex-col gap-1">
+        <div className="space-y-1 xl:space-y-1.5">
           <div className="flex items-center justify-between">
-            <label htmlFor="phone" className="text-primary-blue text-sm">
+            <label
+              htmlFor="phone"
+              className="text-primary-blue text-sm xl:text-base"
+            >
               Phone Number
             </label>
             {errors.phone && (
               <span className="text-primary-red text-xs font-medium">
-                {errors.phone}
+                {errors.phone.message}
               </span>
             )}
           </div>
           <input
+            {...register("phone", {
+              required: "Phone number is required",
+              pattern: {
+                value:
+                  /^(?:\+1[\s.-]?)?(?:\(\d{3}\)|\d{3})[\s.-]?\d{3}[\s.-]?\d{4}$/,
+                message: "Enter a valid phone number",
+              },
+            })}
             type="text"
             id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={(e) => handlePersonalInfoChange(e)}
             placeholder="e.g. +1 234 567 890"
-            className="rounded-sm px-4 py-2 placeholder-neutral-grey font-medium border border-neutral-grey"
+            className="w-full rounded-lg px-4 py-3 placeholder-neutral-grey font-medium border border-neutral-grey xl:text-lg cursor-pointer"
           />
         </div>
       </div>
