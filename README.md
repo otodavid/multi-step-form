@@ -37,7 +37,7 @@ Users should be able to:
 
 ### Screenshot
 
-![Multi-step form screenshot](./screenshot.jpg)
+![Multi-step form screenshot](./screenshot.png)
 
 ### Links
 
