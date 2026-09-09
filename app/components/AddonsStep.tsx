@@ -35,10 +35,9 @@ export const AddonsStep = () => {
                 <div className="border border-neutral-grey w-5 h-5 rounded-sm flex justify-center items-center peer-checked:bg-primary-purple lg:w-6 lg:h-6">
                   <Image
                     src={"/images/icon-checkmark.svg"}
-                    alt="checkmark icon"
+                    alt=""
                     width={12}
                     height={12}
-                    className=""
                   />
                 </div>
               </div>
