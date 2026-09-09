@@ -6,16 +6,20 @@ interface FooterProps {
 
 export const Footer = ({ step, nextStep, prevStep }: FooterProps) => {
   return (
-    <footer className="bg-neutral-white p-5 flex justify-between items-center">
+    <footer className="bg-neutral-white p-5 flex justify-between items-center xl:text-xl">
       {step !== 1 && (
-        <button onClick={prevStep} className="text-neutral-grey font-medium">
+        <button
+          onClick={prevStep}
+          className="text-neutral-grey font-medium cursor-pointer hover:text-primary-blue capitalize"
+        >
           Go back
         </button>
       )}
 
       <button
         onClick={nextStep}
-        className="bg-primary-blue p-2 text-neutral-white rounded-sm capitalize ml-auto font-medium px-4"
+        type={step !== 4 ? "button" : "submit"}
+        className={`p-2 text-neutral-white rounded-lg capitalize ml-auto font-medium px-4 xl:px-8 xl:py-4 cursor-pointer ${step === 4 ? "bg-primary-purple hover:opacity-70" : "bg-primary-blue hover:bg-primary-purple"}`}
       >
         {step !== 4 ? "next steps" : "confirm"}
       </button>
