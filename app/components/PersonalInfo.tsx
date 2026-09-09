@@ -25,7 +25,10 @@ export const PersonalInfo = () => {
               Name
             </label>
             {errors.name && (
-              <span className="text-primary-red text-xs font-medium">
+              <span
+                id="name-error"
+                className="text-primary-red text-xs font-medium"
+              >
                 {errors.name.message}
               </span>
             )}
@@ -36,6 +39,8 @@ export const PersonalInfo = () => {
             id="name"
             placeholder="e.g. Stephen King"
             className="w-full rounded-lg px-4 py-3 placeholder-neutral-grey font-medium border border-neutral-grey xl:text-lg cursor-pointer"
+            aria-invalid={errors.name ? "true" : "false"}
+            aria-describedby={errors.name ? "name-error" : undefined}
           />
         </div>
 
@@ -48,7 +53,10 @@ export const PersonalInfo = () => {
               Email Address
             </label>
             {errors.email && (
-              <span className="text-primary-red text-xs font-medium">
+              <span
+                id="email-error"
+                className="text-primary-red text-xs font-medium"
+              >
                 {errors.email.message}
               </span>
             )}
@@ -57,14 +65,16 @@ export const PersonalInfo = () => {
             {...register("email", {
               required: "Email is required",
               pattern: {
-                value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i,
                 message: "Invalid email address",
               },
             })}
-            type="text"
+            type="email"
             id="email"
             placeholder="e.g. stephenking@lorem.com"
             className="w-full rounded-lg px-4 py-3 placeholder-neutral-grey font-medium border border-neutral-grey xl:text-lg cursor-pointer"
+            aria-invalid={errors.email ? "true" : "false"}
+            aria-describedby={errors.email ? "email-error" : undefined}
           />
         </div>
 
@@ -77,7 +87,10 @@ export const PersonalInfo = () => {
               Phone Number
             </label>
             {errors.phone && (
-              <span className="text-primary-red text-xs font-medium">
+              <span
+                id="phone-error"
+                className="text-primary-red text-xs font-medium"
+              >
                 {errors.phone.message}
               </span>
             )}
@@ -95,6 +108,8 @@ export const PersonalInfo = () => {
             id="phone"
             placeholder="e.g. +1 234 567 890"
             className="w-full rounded-lg px-4 py-3 placeholder-neutral-grey font-medium border border-neutral-grey xl:text-lg cursor-pointer"
+            aria-invalid={errors.phone ? "true" : "false"}
+            aria-describedby={errors.phone ? "phone-error" : undefined}
           />
         </div>
       </div>
