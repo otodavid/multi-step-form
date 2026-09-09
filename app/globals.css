@@ -37,8 +37,13 @@ body {
 }
 
 .app-bg {
-  background: url("../public/images/bg-sidebar-mobile.svg");
+  background-image: url("../public/images/bg-sidebar-mobile.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: 55% 50%;
+
+  @media (min-width: 768px) {
+    background-image: url("../public/images/bg-sidebar-desktop.svg");
+    background-position: 50% 50%;
+  }
 }
