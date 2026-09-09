@@ -49,13 +49,3 @@ export interface FormState {
   plan: PlanName;
   addons: string[];
 }
-
-export interface FormContextType {
-  formData: FormState;
-  setFormData: Dispatch<SetStateAction<FormState>>;
-}
-
-export interface StepContextType {
-  step: number;
-  setStep: Dispatch<SetStateAction<{ step: number }>>;
-}
