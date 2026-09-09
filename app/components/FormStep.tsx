@@ -20,6 +20,8 @@ export const FormStep = ({
       type="button"
       disabled={currentStep < index || hasFinishedForm}
       onClick={() => jumpToStep(index)}
+      aria-label={`Step ${index}: ${stepInfo.name} `}
+      aria-current={currentStep === index ? "step" : undefined}
     >
       <span
         className={`flex items-center justify-center w-10 h-10 rounded-full font-medium bg-primary-blue-lighter xl:h-12 xl:w-12 xl:font-bold xl:text-xl ${
