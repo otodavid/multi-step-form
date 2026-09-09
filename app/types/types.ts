@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface StepInfo {
   name: string;
   description: string;
@@ -8,11 +10,11 @@ export type PlanName = "Arcade" | "Advanced" | "Pro";
 
 export interface Pricing {
   monthly: {
-    price: string;
+    price: number;
     promo?: string;
   };
   yearly: {
-    price: string;
+    price: number;
     promo?: string;
   };
 }
@@ -36,7 +38,7 @@ export interface SelectedPlanPrice {
 
 export interface SelectedAddonNameAndPrice {
   name: string;
-  price: string;
+  price: number;
 }
 
 export interface FormState {
@@ -46,4 +48,14 @@ export interface FormState {
   frequency: Frequency;
   plan: PlanName;
   addons: string[];
+}
+
+export interface FormContextType {
+  formData: FormState;
+  setFormData: Dispatch<SetStateAction<FormState>>;
+}
+
+export interface StepContextType {
+  step: number;
+  setStep: Dispatch<SetStateAction<{ step: number }>>;
 }
