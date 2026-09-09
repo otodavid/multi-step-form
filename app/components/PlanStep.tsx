@@ -1,55 +1,69 @@
 import Image from "next/image";
-import { FormState, Frequency, PlanName } from "../types/types";
+import { FormState } from "../types/types";
 import { PLANS_LIST } from "../utils/constants";
+import { useFormContext } from "react-hook-form";
+import { Heading } from "./Heading";
+import { priceDisplay } from "../utils/helper";
 
-interface PlanStepProps {
-  formData: FormState;
-  handleFrequencyToggle: () => void;
-  handleSelectedPlanChange: (plan: PlanName) => void;
-}
+export const PlanStep = () => {
+  const { register, setValue, watch } = useFormContext<FormState>();
 
-export const PlanStep = ({
-  formData: { frequency, plan: selectedPlan },
-  handleFrequencyToggle,
-  handleSelectedPlanChange,
-}: PlanStepProps) => {
+  const frequency = watch("frequency");
+
+  const handleFrequencyToggle = () => {
+    setValue("frequency", frequency === "monthly" ? "yearly" : "monthly");
+  };
+
   return (
     <div>
-      <h2 className="text-2xl font-bold text-primary-blue">Select your plan</h2>
-      <p className="text-neutral-grey font-normal mt-2">
-        You have the option of monthly or yearly billing.
-      </p>
-
+      <Heading
+        title="Select your plan"
+        description="You have the option of monthly or yearly billing."
+      />
       <div className="space-y-4 mt-6">
-        {PLANS_LIST.map((plan, index) => (
-          <label className="w-full block" key={index}>
-            <input
-              type="radio"
-              name="plan"
-              id="plan"
-              className="peer sr-only"
-              value={plan.name}
-              checked={selectedPlan === plan.name}
-              onChange={() => handleSelectedPlanChange(plan.name)}
-            />
-            <div
-              className={`w-full border border-neutral-grey peer-checked:border-primary-purple rounded-md peer-checked:bg-neutral-blue-lighter flex gap-4 p-4 items-start ${index === 0 ? "peer-checked" : ""}`}
-            >
-              <Image src={plan.image} alt="arcade" width={40} height={40} />
-              <div className="space-y-1">
-                <h4 className="text-primary-blue font-medium">{plan.name}</h4>
-                <p className="text-sm text-neutral-grey">
-                  {plan.pricing[frequency].price}
-                </p>
-                <p className="text-xs text-primary-blue">
-                  {plan.pricing[frequency].promo}
-                </p>
+        <div className="space-y-4 md:space-y-0 md:flex md:gap-4 xl:gap-6">
+          {PLANS_LIST.map((plan, index) => (
+            <label className="w-full block" key={index}>
+              <input
+                {...register("plan", { required: "Please select a plan" })}
+                type="radio"
+                name="plan"
+                id="plan"
+                className="peer sr-only"
+                value={plan.name}
+              />
+              <div
+                className={`w-full border border-neutral-grey peer-checked:border-primary-purple rounded-xl peer-checked:bg-neutral-blue-lighter flex gap-4 p-4 items-start ${index === 0 ? "peer-checked" : ""} md:flex-col md:items-start md:gap-16 xl:px-5 xl:py-6 hover:border-primary-purple transition-colors cursor-pointer`}
+              >
+                <div className="relative w-10 h-10 md:w-12 md:h-12">
+                  <Image
+                    src={plan.image}
+                    alt={plan.name}
+                    fill={true}
+                    className="cover"
+                  />
+                </div>
+                <div className="space-y-0.5">
+                  <h4 className="text-primary-blue font-medium lg:text-xl">
+                    {plan.name}
+                  </h4>
+                  <p className="text-sm text-neutral-grey lg:text-base">
+                    {priceDisplay(
+                      plan.pricing[frequency].price,
+                      frequency,
+                      false,
+                    )}
+                  </p>
+                  <p className="text-xs text-primary-blue lg:text-sm">
+                    {plan.pricing[frequency].promo}
+                  </p>
+                </div>
               </div>
-            </div>
-          </label>
-        ))}
+            </label>
+          ))}
+        </div>
 
-        <div className="w-full bg-neutral-blue-lighter p-4 flex justify-center gap-8 rounded-md mt-4">
+        <div className="w-full bg-neutral-blue-lighter p-4 flex justify-center gap-8 rounded-xl mt-4 md:mt-7 lg:text-lg xl:mt-10 xl:p-5">
           <span
             className={`font-medium ${frequency === "monthly" ? "text-primary-blue" : "text-neutral-grey"}`}
           >
