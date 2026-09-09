@@ -9,12 +9,12 @@ export const priceDisplay = (
     if (frequency === "monthly") {
       return `+$${price}/mo`;
     } else {
-      return `+${price}/yr`;
+      return `+$${price}/yr`;
     }
 
   if (frequency === "monthly") {
     return `$${price}/mo`;
   } else {
-    return `${price}/yr`;
+    return `$${price}/yr`;
   }
 };
