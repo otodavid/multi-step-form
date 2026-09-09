@@ -75,6 +75,7 @@ export const PlanStep = () => {
             className=" bg-primary-blue w-9 h-5 rounded-full p-1 cursor-pointer"
             onClick={handleFrequencyToggle}
             aria-checked={frequency === "yearly"}
+            aria-label={`Billing frequency: ${frequency}`}
           >
             <div
               className={`w-3 h-3 bg-neutral-white rounded-full translate-x-0 transition-all ${frequency !== "monthly" && "translate-x-4"}`}
