@@ -11,6 +11,7 @@ export const Footer = ({ step, nextStep, prevStep }: FooterProps) => {
         <button
           onClick={prevStep}
           className="text-neutral-grey font-medium cursor-pointer hover:text-primary-blue capitalize"
+          type="button"
         >
           Go back
         </button>
@@ -18,7 +19,7 @@ export const Footer = ({ step, nextStep, prevStep }: FooterProps) => {
 
       <button
         onClick={nextStep}
-        type={step !== 4 ? "button" : "submit"}
+        type="button"
         className={`p-2 text-neutral-white rounded-lg capitalize ml-auto font-medium px-4 xl:px-8 xl:py-4 cursor-pointer ${step === 4 ? "bg-primary-purple hover:opacity-70" : "bg-primary-blue hover:bg-primary-purple"}`}
       >
         {step !== 4 ? "next steps" : "confirm"}
