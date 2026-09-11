@@ -46,7 +46,9 @@ export const MultiStepForm = () => {
     }
 
     if (step === 4) {
+      await handleSubmit(onSubmit);
       setHasFinishedForm(true);
+      return;
     }
 
     setStep((prev) => (prev < STEPS.length ? prev + 1 : prev));
