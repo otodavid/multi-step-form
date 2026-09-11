@@ -28,12 +28,12 @@ export const PlanStep = () => {
                 {...register("plan", { required: "Please select a plan" })}
                 type="radio"
                 name="plan"
-                id="plan"
+                id={plan.name}
                 className="peer sr-only"
                 value={plan.name}
               />
               <div
-                className={`w-full border border-neutral-grey peer-checked:border-primary-purple rounded-xl peer-checked:bg-neutral-blue-lighter flex gap-4 p-4 items-start ${index === 0 ? "peer-checked" : ""} md:flex-col md:items-start md:gap-16 xl:px-5 xl:py-6 hover:border-primary-purple transition-colors cursor-pointer`}
+                className={`w-full border border-neutral-grey peer-checked:border-primary-purple rounded-xl peer-checked:bg-neutral-blue-lighter peer-focus-visible:ring-2 peer-focus-visible:ring-primary-purple ring-offset-2 flex gap-4 p-4 items-start ${index === 0 ? "peer-checked" : ""} md:flex-col md:items-start md:gap-16 xl:px-5 xl:py-6 hover:border-primary-purple transition-colors cursor-pointer`}
               >
                 <div className="relative w-10 h-10 md:w-12 md:h-12">
                   <Image
@@ -44,9 +44,9 @@ export const PlanStep = () => {
                   />
                 </div>
                 <div className="space-y-0.5">
-                  <h4 className="text-primary-blue font-medium lg:text-xl">
+                  <h3 className="text-primary-blue font-medium lg:text-xl">
                     {plan.name}
-                  </h4>
+                  </h3>
                   <p className="text-sm text-neutral-grey lg:text-base">
                     {priceDisplay(
                       plan.pricing[frequency].price,

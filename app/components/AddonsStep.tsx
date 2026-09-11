@@ -22,7 +22,7 @@ export const AddonsStep = () => {
             htmlFor={addon.name}
             className="cursor-pointer peer block"
           >
-            <div className="border rounded-lg p-4 transition-colors border-neutral-grey has-checked:border-primary-purple has-checked:bg-neutral-blue-lighter flex gap-4 items-center hover:border-primary-purple xl:px-8 xl:py-6 xl:gap-8">
+            <div className="border rounded-lg p-4 transition-colors border-neutral-grey has-checked:border-primary-purple has-checked:bg-neutral-blue-lighter has-focus-visible:ring-2 has-focus-visible:ring-primary-purple has-focus-visible:ring-offset-2 flex gap-4 items-center hover:border-primary-purple xl:px-8 xl:py-6 xl:gap-8">
               <div>
                 <input
                   type="checkbox"
@@ -43,9 +43,9 @@ export const AddonsStep = () => {
               </div>
               <div className="w-full flex justify-between items-center">
                 <div>
-                  <h4 className="text-primary-blue font-medium text-sm lg:text-lg">
+                  <h3 className="text-primary-blue font-medium text-sm lg:text-lg">
                     {addon.name}
-                  </h4>
+                  </h3>
                   <p className="text-neutral-grey text-xs lg:text-sm">
                     {addon.description}
                   </p>
